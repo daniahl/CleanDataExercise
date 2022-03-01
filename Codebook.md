@@ -20,4 +20,4 @@ Beside the many sensor data columns, there are three additional ones:
 Two data frames are output from the script:
 
 * data: contains the merged and cleaned original data
-* new_data: contains means for all columns grouped by subject and activity.
+* mean_data: contains means for all columns grouped by subject and activity.

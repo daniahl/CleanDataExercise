@@ -1,6 +1,8 @@
 # This script first gets the source data, then creates two data frames (tibbles) according to the exercise:
 # * data: contains the merged trian and test data
 # * mean_data: contains grouped means of the variables
+#
+# Finally, it saves mean_data to a text file.
 
 # download data if not already available
 if (!file.exists("data.zip")) download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", destfile="data.zip", method="curl")
@@ -30,3 +32,6 @@ levels(data$activity) <- activity_labels
 
 # create grouped means data frame
 mean_data <- data %>% group_by(subject, activity) %>% summarize(across(-source, ~ mean(.x, na.rm=T)))
+
+# save mean_data
+write.table(mean_data, file="mean_data.txt", row.names = FALSE)
